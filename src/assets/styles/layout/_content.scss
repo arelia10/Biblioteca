@@ -1,0 +1,24 @@
+.layout-main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 7rem 2rem 2rem 4rem;
+    transition: margin-left $transitionDuration;
+}
+
+.layout-main {
+    flex: 1 1 auto;
+}
+
+.rounded-image {
+    border-radius: 10px;
+    /* ajusta el valor de acuerdo a tus necesidades */
+    width: 75%;    
+    /* ajusta la altura del div según tus necesidades */
+    background-size: cover;
+    /* asegura que la imagen de fondo se ajuste a la altura y anchura del div */
+    background-repeat: no-repeat;
+    /* asegura que la imagen de fondo no se repita */
+    cursor: pointer;
+}

@@ -1,0 +1,48 @@
+<app-navar style="position: fixed; top: 0; width: 100%; height: 80px; z-index: 999; "></app-navar>
+
+<!-- contenedor de primera vista -->
+<div class="container min-vh-100 componente-fondo">
+  <div class="row justify-content-center ">
+    <div class="col-xl-8">
+      <div class="text-center text-white py-4 content-serch ">
+
+        <div class="t-5">
+          <h1 class="title-app mb-5">Buscador</h1>
+
+
+          <!-- contenedor de mi buscador con mis opciones busqueda avanzada y busqueda simple -->
+          <div class="form-subscribe " id="contactForm" data-sb-form-api-token="API_TOKEN">
+
+            <div class="row">
+              <div class="col">
+                <div class="input-group">
+                  <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Buscar en la biblioteca" id="example-search-input">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary bg-transparent border-bottom-0 border-0 rounded-pill ms-n5" routerLink="/option"  type="button">
+                    <i class="fa-sharp fa-light fa-magnifying-glass" routerLink="/option" style="color: #325262;"></i>
+                  </button>
+              </span>
+                </div>
+                <div class="text-end fs-6">
+                  <a class="button advanced-search-link" routerLink="/searchadvanced" href="">Búsqueda avanzada</a>
+                </div>
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-3 text-center" *ngFor="let option of optionsSearch">
+                      <label>
+                        <button [ngClass]="{ 'checked': option.isChecked }"
+                          (click)="option.isChecked = !option.isChecked">
+                          <i class="fa-duotone {{ option.icono }}"></i>
+                        </button>
+                      </label>
+                      <div class="my-auto showcase-text">
+                        <h2>{{ option.texto }}</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>

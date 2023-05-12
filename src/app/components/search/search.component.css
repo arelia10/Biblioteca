@@ -1,0 +1,78 @@
+:host {
+  display: block;
+  /* background-image: url('../../../assets/images/picture.jpeg');*/
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.ms-n5 {
+  margin-left: -40px;
+}
+input.form-control {
+  width: 43rem; /* Cambia el valor para ajustar el ancho */
+}
+.container{
+  margin-top:5rem ;
+}
+.content-serch {
+  margin-top: 3rem;
+}
+
+.title-app {
+  color: #325262;
+  font-size: 70px;
+  font-family: Roboto Serif
+}
+
+.input-group-append {
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  width: 3rem;
+
+  transform: translateY(-50%)
+}
+
+
+
+.text-end {
+  color: #325262;
+}
+
+.advanced-search-link {
+  color: #325262;
+}
+
+h2 {
+  font-size: 12px;
+  color: #325262;
+}
+
+button {
+  border: none;
+  color: #325262;
+  border-color: inherit;
+  width: 8rem;
+  border-radius: 2rem;
+  width: 4rem;
+  height: 4rem;
+  --fa-primary-color: #20343e;
+  --fa-secondary-color: #20343e;
+}
+
+button:hover {
+  background: #a6adb1;
+  color: #fff !important;
+}
+
+button.checked {
+
+  background-color: #a6adb1;
+
+}
+btn-small{
+  width: 1rem;
+}
+
+

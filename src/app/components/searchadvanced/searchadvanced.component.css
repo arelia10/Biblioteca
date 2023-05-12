@@ -1,0 +1,93 @@
+.text-white {
+  color: white;
+}
+
+.py-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+
+
+.bi-t{
+margin-left: 18rem;
+
+width: 4rem;
+}
+
+
+
+
+.table-no-border {
+  border: none;
+}
+
+
+.buscar{
+background:  #F49F0A;
+
+color: #325262;
+
+
+}
+.limpiar{
+background:  #325262;
+color: #ffff;
+
+}
+
+.button-add{
+margin-left: 0.2rem;
+color: #325262;
+cursor: pointer;
+
+}
+.option-icon {
+display: inline-block;
+margin-right: 5px;
+}
+
+.advance{
+
+position: absolute;
+margin-left: -15rem;
+
+
+}
+
+.titleserch{
+  font-size: 21px;
+}
+
+tr,th,td{
+  border:none;
+}
+
+input.form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.button-trash{
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%)
+}
+.icon-trash{
+  margin-top: 0rem;
+}
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
