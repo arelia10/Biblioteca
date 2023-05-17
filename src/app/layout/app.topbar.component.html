@@ -1,10 +1,11 @@
-<div class="layout-topbar">
+<div class="layout-topbar" style="background-color: #f8f9fa;">
     <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
-        <span>SAKAI</span>
+      <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo' : 'logo'}}.png" alt="logo_adobe_express" style="width:95px; height:70px" >
+
+
     </a>
 
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+    <button #menubutton style="margin-left: -2rem;" class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
 
@@ -21,7 +22,7 @@
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+        <button class="p-link layout-topbar-button" routerLink="/search">
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>

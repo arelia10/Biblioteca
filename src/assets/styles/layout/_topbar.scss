@@ -18,29 +18,40 @@
         color: var(--surface-900);
         font-size: 1.5rem;
         font-weight: 500;
-        width: 70px;       
+        width: 70px;
 
         img {
             height:3rem;
             margin-right: .5rem;
         }
-      
-    }   
+
+    }
+
     .layout-topbar-title{
         display: flex;
         justify-content: center;
         align-items: center;
-    }   
-      
+    }
+
     .circular-button {
         background: #F37A00;
-        border-radius: 50%;       
+        border-radius: 50%;
         width: 3em;
-        height: 3em;       
+        height: 3em;
         align-items: center;
         justify-content: center;
+        align-items: center;
+
       }
+
+
+
+
 }
+
+
+
+
 @media (max-width: 991px) {
     .layout-topbar {
         justify-content: space-between;
@@ -48,7 +59,9 @@
         .layout-topbar-logo {
             width: auto;
             order: 2;
-        }        
-        
-    }
+        }
+
+      }
+
+
 }

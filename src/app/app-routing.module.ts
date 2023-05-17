@@ -12,12 +12,17 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
 
 
 const routes: Routes = [
-  { path: 'search', component: SearchComponent },
+ { path: 'search', component: SearchComponent },
   { path: 'result', component:DocumentsComponent },
   { path: 'searchadvanced', component: SearchadvancedComponent},
   { path: 'option', component: OptionComponent},
 
-  {path: '', component: AppLayoutComponent,},
+  {
+    path: '', component: AppLayoutComponent,
+    children: [
+       { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
+      ]
+},
 ];
 
 @NgModule({

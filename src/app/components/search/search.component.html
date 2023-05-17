@@ -30,7 +30,7 @@
                   <div class="row">
                     <div class="col-12 col-md-3 text-center" *ngFor="let option of optionsSearch">
                       <label>
-                        <button [ngClass]="{ 'checked': option.isChecked }"
+                        <button
                           (click)="option.isChecked = !option.isChecked">
                           <i class="fa-duotone {{ option.icono }}"></i>
                         </button>

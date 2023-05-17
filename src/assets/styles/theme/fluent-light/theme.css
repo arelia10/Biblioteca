@@ -1739,7 +1739,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 
 .p-treeselect {
   background: #ffffff;
-  border: 1px solid #605e5c;
+  border: 1px solid #605e5c ;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   border-radius: 2px;
 }
@@ -1862,7 +1862,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 
 .p-button {
   color: #ffffff;
-  background: #0078d4;
+  background: #325262;
   border: 1px solid #0078d4;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -1870,7 +1870,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-radius: 2px;
 }
 .p-button:enabled:hover {
-  background: #106ebe;
+  background: #325262;
   color: #ffffff;
   border-color: #106ebe;
 }

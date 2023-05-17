@@ -1,0 +1,689 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card px-6 py-6">
+      <p-toast></p-toast>
+      <p-table #dt [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="[
+          'name',
+          'country.name',
+          'representative.name',
+          'status'
+        ]" [paginator]="true" [rowsPerPageOptions]="[10, 20, 30]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts"
+        selectionMode="multiple" [rowHover]="true" dataKey="id">
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between">
+            <div class="flex justify-content-between">
+              <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-add mr-2"
+                (click)="openNew()"></button>
+              <button pButton pRipple label="Export" icon="fa-regular fa-file-excel" class="p-button-export"
+                (click)="dt.exportCSV()"></button>
+            </div>
+
+            <span class="block mt-2 md:mt-0 p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..."
+                class="w-full sm:w-auto" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+
+            <th style="min-width: 5rem;position: sticky; left: 0" pSortableColumn="acciones">
+              Acciones
+            </th>
+
+            <th style="min-width: 12rem" pSortableColumn="digital">
+              Versión Digital<p-sortIcon field="digital"></p-sortIcon>
+            </th>
+
+            <th style="min-width: 15rem" pSortableColumn="area">
+              Área de Derecho<p-sortIcon field="area"></p-sortIcon>
+            </th>
+            <th pSortableColumn="code">
+              Código<p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th pSortableColumn="">Índice<p-sortIcon field=""></p-sortIcon></th>
+            <th pSortableColumn="author">
+              Autores<p-sortIcon field="author"></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="name">
+              Título Libro/Revista<p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="quote">
+              Cita<p-sortIcon field="quote"></p-sortIcon>
+            </th>
+            <th style="min-width: 12rem" pSortableColumn="">
+              Boletín Nuevas<p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="category">
+              Tipo Adquisiciones<p-sortIcon field="category"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              Editorial<p-sortIcon field="editorial"></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="editorial">
+              Fecha Publicación<p-sortIcon field="name" field="date" type="date" field="date" display="menu"
+                placeholder="mm/dd/yyyy"></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="city">
+              Lugar Publicación<p-sortIcon></p-sortIcon>
+            </th>
+            <th pSortableColumn="volume">
+              Volumen<p-sortIcon field="volume"></p-sortIcon>
+            </th>
+            <th pSortableColumn="edition">
+              Edición<p-sortIcon field="edition"></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="postdate">
+              Creado Original<p-sortIcon field="postdate"></p-sortIcon>
+            </th>
+            <th style="min-width: 15rem" pSortableColumn="digitaldate">
+              Fecha Digitalización<p-sortIcon field="digitaldate"></p-sortIcon>
+            </th>
+            <th style="min-width: 12rem" pSortableColumn="digitizer">
+              Digitalizador<p-sortIcon field="digitizer"></p-sortIcon>
+            </th>
+            <th pSortableColumn="inventoryStatus">
+              Status <p-sortIcon field="inventoryStatus"></p-sortIcon>
+            </th>
+
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+
+            <td style="position: sticky; left: 0; background-color:#ffffff ;">
+              <div class="flex">
+                <button pButton pRipple  class="p-button-rounded-accion  mr-2"
+                  (click)="editProduct(product)"><i class="fa-solid fa-pen-circle fa-2xl" style="color: #325262;line-height: 1.03125em"></i></button>
+                <button pButton pRipple class="p-button-rounded-accion"
+                  (click)="deleteProduct(product)"><i class="fa-solid fa-circle-trash fa-2xl" style="color: tomato; line-height: 1.03125em"></i></button>
+              </div>
+            </td>
+
+
+            <td class="text-center">
+              <span class="p-column-title">Versión Digital</span>
+
+              <i class="pi fa-2xl" [ngClass]="{
+                  'text-success pi-check-circle': product.digital,
+                  'text-danger pi-times-circle': !product.digital
+                }">
+              </i>
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Área</span>
+              {{ product.area }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Código</span>
+              {{ product.code }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Índice</span>
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Autores</span>
+              {{ product.author }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Título Libro/Revista</span>
+              {{ product.name }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Cita</span>
+              {{ product.quote }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Boletín Nuevas</span>
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Tipo adquisiciones</span>
+              {{ product.category }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Editorial</span>
+              {{ product.editorial }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Fecha Publicación</span>
+              {{ product.date }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Lugar Publicación</span>
+              {{ product.city }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Volumen</span>
+              {{ product.volume }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Edición</span>
+              {{ product.edition }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Creado Original</span>
+              {{ product.postdate }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Fecha Digitalización</span>
+              {{ product.digitaldate }}
+            </td>
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Digitalizador</span>
+              {{ product.digitizer }}
+            </td>
+
+            <td style="width: 14%; min-width: 10rem">
+              <span class="p-column-title">Status</span>
+              <span [class]="
+                  'product-badge status-' +
+                  (product.inventoryStatus
+                    ? product.inventoryStatus.toLowerCase()
+                    : '')
+                ">{{ product.inventoryStatus }}</span>
+            </td>
+
+
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <p-dialog id="modal1" [(visible)]="productDialog" header="REGISTRAR UNA NUEVA ADQUISICIÓN" [modal]="true"
+      class="p-fluid" headerStyleClass="mi-clase-css">
+      <ng-template pTemplate="content">
+        <div class="field col-12 md:col-12 mb-0">
+          <div class="p-fluid p-formgrid grid">
+            <div class="col-4">
+              <label>
+                <h5><span class="text-red-400"> *</span>Tipo de documento</h5>
+              </label>
+              <p-dropdown [options]="document" dataKey="id" placeholder="Selecciona una opción" optionLabel="valor"
+                optionValue="id" (onChange)="showReferredAffinitas($event.value)" [ngClass]="{
+                  'ng-invalid ng-dirty': submitted && !product.document
+                }">
+              </p-dropdown>
+              <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.document">Name is required.</small>
+            </div>
+            <div class="col-4">
+              <label>
+                <h5><span class="text-red-400"> *</span>Área de derecho</h5>
+              </label>
+              <p-dropdown [options]="laws" dataKey="id" placeholder="Selecciona" optionLabel="valor" [ngClass]="{
+                  'ng-invalid ng-dirty': submitted && !product.name
+                }"></p-dropdown>
+              <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.name">Name is required.</small>
+            </div>
+            <div class="col-4">
+              <label for="name">
+                <h5>Área del estudio</h5>
+              </label>
+              <p-dropdown [options]="area" dataKey="id" placeholder="Selecciona" optionLabel="valor">
+              </p-dropdown>
+            </div>
+          </div>
+        </div>
+        <div class="field col-12 md:col-12 mb-0 py-0">
+          <div class="p-fluid p-formgrid grid">
+            <div class="col-4">
+              <label for="name">
+                <h5>Versión Digital</h5>
+              </label>
+              <br />
+              <p-inputSwitch [(ngModel)]="product.checked"></p-inputSwitch>
+            </div>
+
+             <div class="col-8" *ngIf="!showSubject || stateBook||stateMagazine||stateChapte||stateArticle||stateDocumentelec">
+              <label for="name">
+                <h5>Código de clasificación</h5>
+              </label>
+              <input type="text" pInputText formControlName="txDescripcion" placeholder="Escribe el codigo" />
+              </div>
+
+
+            <div class="col-12" *ngIf="!showSubject||stateChapte||stateArticle">
+              <label for="name">
+                <h5>Co_Clasificación Match</h5>
+              </label>
+              <p-dropdown [options]="match" dataKey="id" placeholder="Selecciona" optionLabel="valor">
+              </p-dropdown>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="field col-12 md:col-12 mb-0">
+          <div class="p-fluid p-formgrid grid">
+            <div class="col-12" *ngIf="!showSubject || stateBook || stateChapte||stateArticle||stateDocumentelec">
+              <label>
+                <h5>Autores</h5>
+              </label>
+              <div class="input-container d-flex align-items-center">
+                <p-multiSelect [options]="authors"  appendTo="body" [(ngModel)]="selectedAuthors" defaultLabel="Selecciona el compilador"
+                  optionLabel="name" display="chip" class="w-100"></p-multiSelect>
+                <button class="btn-plus" label="Agregar">
+                  <i class="pi pi-plus icon-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-6" *ngIf="!showSubject || stateBook">
+              <label>
+                <h5>Compiladores</h5>
+              </label>
+              <p-multiSelect [options]="compilador"  appendTo="body" [(ngModel)]="selectedCompilador" defaultLabel="Selecciona los directores"
+                optionLabel="name" display="chip"></p-multiSelect>
+            </div>
+
+            <div class="col-6" *ngIf="!showSubject || stateBook">
+              <label>
+                <h5>Editores</h5>
+              </label>
+              <p-multiSelect [options]="editores"   appendTo="body" [(ngModel)]="selectedEditores" defaultLabel="Selecciona los directores"
+                optionLabel="name" display="chip"></p-multiSelect>
+            </div>
+
+            <div class="col-6" *ngIf="!showSubject || stateBook">
+              <label>
+                <h5>Directores</h5>
+              </label>
+              <p-multiSelect [options]="directores"  appendTo="body" [(ngModel)]="selectedDirectores" defaultLabel="Selecciona el"
+                optionLabel="name" display="chip"></p-multiSelect>
+            </div>
+
+            <div class="col-6" *ngIf="!showSubject || stateBook">
+              <label>
+                <h5>Coordinador</h5>
+              </label>
+              <p-multiSelect [options]="coordinador"  appendTo="body" [(ngModel)]="selectedCoordinador" defaultLabel="Selecciona el autor"
+                optionLabel="name" display="chip"></p-multiSelect>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-12 md:col-12 mb-0">
+          <div class="p-fluid p-formgrid grid">
+            <div class="col-6" *ngIf="!showSubject||stateBook||stateMagazine">
+              <label for="name">
+                <h5>Títulos Libro/Revista</h5>
+              </label>
+              <input type="text" pInputText formControlName="txDescripcion" placeholder="Ingresa el título" />
+            </div>
+            <div class="col-6" *ngIf="!showSubject||stateChapte||stateArticle||stateDocumentelec">
+              <label for="name">
+                <h5>Títulos Artículo/Capítulo/Documento</h5>
+              </label>
+              <input type="text" pInputText placeholder="Ingresa el título" />
+            </div>
+
+            <div class="col-6" *ngIf="!showSubject||stateBook||stateMagazine||stateChapte||stateArticle">
+              <label for="name">
+                <h5>Páginas</h5>
+              </label>
+              <input type="text" pInputText formControlName="txDescripcion" placeholder="pp." />
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="field col-12 md:col-12 mb-0 py-0"  *ngIf="!stateChapte">
+          <div class="p-fluid p-formgrid grid">
+            <div class="col-6">
+              <label>
+                <h5>Lugar de publicación</h5>
+              </label>
+              <p-dropdown   appendTo="body" [options]="countries" [(ngModel)]="selectedCountryAdvanced" placeholder="Selecciona el país"
+                optionLabel="name" class="multiselect-custom" [filter]="true" filterBy="name" [showClear]="true">
+                <ng-template let-country pTemplate="item">
+                  <div class="flex align-items-center">
+                    <img src="assets/demo/images/flag/flag_placeholder.png"
+                      [class]="'flag flag-' + country.code.toLowerCase()" style="width: 21px" />
+                    <span class="ml-2">{{ country.name }}</span>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+            </div>
+
+            <div class="col-6">
+              <label>
+                <h5>Fecha de publicación</h5>
+              </label>
+              <p-calendar appendTo="body" [(ngModel)]="date" [showIcon]="true" appendTo="body"
+                placeholder="Ingresa la fecha"></p-calendar>
+            </div>
+          </div>
+
+           </div>
+
+           <div class="field col-12 md:col-12 mb-0">
+            <div class="p-fluid p-formgrid grid">
+              <div class="col-12" *ngIf="!showSubject || stateBook">
+                <label for="name">
+                  <h5>Edición</h5>
+                </label>
+                <div class="input-container d-flex align-items-center">
+                  <p-dropdown [options]="edition" dataKey="id" placeholder="Selecciona" optionLabel="valor"
+                    class="w-100"></p-dropdown>
+                  <button class="btn-plus" label="Agregar">
+                    <i class="pi pi-plus icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12" *ngIf="!showSubject || stateBook||stateMagazine">
+                <label for="name">
+                  <h5>Volumen/Tomo/Número</h5>
+                </label>
+                <input type="text" pInputText formControlName="txDescripcion" placeholder="Volumen/Tomo/N1" />
+              </div>
+            </div>
+          </div>
+
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateBook||stateMagazine||stateDocumentelec">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-12">
+                <label for="name">
+                  <h5>Editorial</h5>
+                </label>
+                <div class="input-container d-flex align-items-center">
+                  <p-dropdown [options]="editorial" dataKey="id" placeholder="Selecciona" optionLabel="valor"
+                    class="w-100"></p-dropdown>
+                  <button class="btn-plus" label="Agregar">
+                    <i class="pi pi-plus icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+            <div class="field col-12 md:col-12 mb-0" *ngIf="!showSubject||stateDocumentelec">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-6">
+                <label for="name">
+                  <h5>Fuente</h5>
+                </label>
+                <input type="text" pInputText placeholder="" />
+              </div>
+              <div class="col-6">
+                <label for="name">
+                  <h5>Enlace Externo</h5>
+                </label>
+                <input type="text" pInputText placeholder="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="field col-12 md:col-12 mb-0" *ngIf="!stateDocumentelec">
+            <div class="p-fluid p-formgrid grid">
+              <div class="col-12">
+                <label for="name">
+                  <h5>Tesauro temático</h5>
+                </label>
+                <div class="input-container d-flex align-items-center">
+                  <p-dropdown #tesauro [options]="tesauroTematico" dataKey="id" placeholder="Selecciona"
+                    optionLabel="valor" class="w-100" appendTo="body"></p-dropdown>
+                  <button (click)="show()" class="btn-plus" label="Agregar">
+                    <i class="pi pi-plus icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateChapte||stateArticle||stateDocumentelec">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-12">
+
+                <label for="name">
+                  <h5>Notas</h5>
+                </label>
+                <textarea class="textarea" pInputTextarea [autoResize]="true"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateBook||stateMagazine">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-6">
+                <label for="status">
+                  <h5>Estado</h5>
+                </label>
+                <p-dropdown [(ngModel)]="product.inventoryStatus" inputId="inventoryStatus" optionValue="label"
+                  [options]="statuses" placeholder="Selecciona">
+                  <ng-template pTemplate="selectedItem">
+                    <span *ngIf="product && product.inventoryStatus" [class]="
+                        'product-badge status-' +
+                        product.inventoryStatus.toString().toLowerCase()
+                      ">{{ product.inventoryStatus }}</span>
+                  </ng-template>
+                  <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{
+                      option.label
+                      }}</span>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+              <div class="col-6">
+                <label>
+                  <h5>Tipo de Aquisición</h5>
+                </label>
+                <p-dropdown [options]="acquisition" defaultLabel="Selecciona los directores" optionLabel="valor"
+                  placeholder="Buscar elemento" dataKey="id"></p-dropdown>
+              </div>
+            </div>
+          </div>
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateBook||stateMagazine">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-6">
+                <label>
+                  <h5>Tipo de Moneda</h5>
+                </label>
+                <p-dropdown [options]="money" optionLabel="valor" placeholder="Seleccionala moneda"
+                  dataKey="id"></p-dropdown>
+              </div>
+              <div class="col-6">
+                <label for="name">
+                  <h5>Precio de compra</h5>
+                </label>
+                <input type="text" pInputText formControlName="txDescripcion" placeholder="ingresa el precio" />
+              </div>
+            </div>
+          </div>
+
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateBook||stateMagazine">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-2">
+                <label for="name">
+                  <h5>Digitalizar</h5>
+                </label>
+                <br />
+                <p-inputSwitch [(ngModel)]="product.checked"></p-inputSwitch>
+              </div>
+
+              <div class="col-4">
+                <label>
+                  <h5>Fecha de digitalización</h5>
+                </label>
+                <p-calendar [(ngModel)]="date" [showIcon]="true" appendTo="body"
+                  placeholder="Ingresa la fecha"></p-calendar>
+              </div>
+
+              <div class="col-6">
+                <label>
+                  <h5>¿Quién digitalizó</h5>
+                </label>
+                <p-dropdown [options]="digitizer" optionLabel="valor" placeholder="Selecciona"
+                  dataKey="id"></p-dropdown>
+              </div>
+            </div>
+          </div>
+
+            <div class="field col-12 md:col-12 mb-0"  *ngIf="!showSubject || stateBook||stateMagazine">
+              <div class="p-fluid p-formgrid grid">
+              <div class="col-6">
+                <label for="name">
+                  <h5>Precio de Digitalización</h5>
+                </label>
+                <input type="text" pInputText formControlName="txDescripcion" placeholder="ingresa el precio" />
+              </div>
+              <div class="col-6">
+                <label for="name">
+                  <h5>Notas</h5>
+                </label>
+                <textarea class="textarea" pInputTextarea [autoResize]="true"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="field col-12 md:col-12 mb-0">
+            <div class="p-fluid p-formgrid grid">
+              <div class="col-12">
+                <label>
+                  <h5>Datos Adjuntos</h5>
+                </label>
+                <p-fileUpload #fileUpload name="demo[]" class="button-add" [multiple]="true"
+                  chooseLabel="Adjuntar archivo" cancelLabel="Eliminar todo" class="p-button-secondary"
+                  [showUploadButton]="false" removeStyleClass="p-button-secondary">
+                  <ng-template pTemplate="file" let-file>
+                    <div class="p-fileupload-row">
+                      <div class="p-fileupload-filename">
+                        {{ file.name }}
+                      </div>
+                      <div class="p-fileupload-row-clear px-0 w-auto">
+                        <button type="button" pButton icon="pi pi-times" (click)="remove(file)" style="
+                            background-color: #325262;
+                            border-color: #325262;
+                            padding: 2px;
+                          "></button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+          </div>
+
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+        <button id="cancel" pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text-cancel" (click)="hideDialog()"></button>
+        <button id="save" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text-save"     (click)="saveProduct()"></button>
+      </ng-template>
+    </p-dialog>
+    <p-dialog id="cancel" [(visible)]="deleteProductDialog" header="Confirm" [modal]="true"
+      [style]="{ width: '450px' }">
+      <div class="flex align-items-center justify-content-center">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+        <span *ngIf="product">Estas seguro de que quieres eliminar <b>{{ product.name }}</b>?</span>
+      </div>
+      <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-times" class="p-button-text-cancel" label="No"
+          (click)="deleteProductDialog = false"></button>
+        <button pButton pRipple icon="pi pi-check" class="p-button-text-save" label="Yes" (click)="confirmDelete()"></button>
+      </ng-template>
+    </p-dialog>
+  </div>
+
+  <p-dialog id="modal2" [(visible)]="modalDialog" header="AGREGAR PALABRA A TESAURO TEMÁTICO" [modal]="true"
+    [style]="{ width: '450px' }" class="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="field col mt-0">
+        <label for="name">
+          <h5>Categoría</h5>
+        </label>
+        <input type="text" pInputText formControlName="txDescripcion" placeholder="Escribe la categoría" />
+      </div>
+      <div class="field col mt-0">
+        <label for="name">
+          <h5>Palabra clave</h5>
+        </label>
+        <input type="text" pInputText formControlName="txDescripcion" placeholder="Agrega la palabra clave" />
+      </div>
+      <div class="field col mt-0">
+        <label for="name">
+          <h5>Sinónimos</h5>
+        </label>
+        <div *ngFor="let celda of celdas; let i = index">
+          <div class="input-group">
+            <input class="form-control" id="example-search-input" placeholder="Escribe el sinónimo" />
+
+            <span class="button-trash input-group-appen" (click)="agregarCelda()"
+              style="margin-left: 11px; margin-top: 5px; cursor: pointer">
+              <i class="fa-solid fa-circle-plus fa-lg icon-trash" style="color: #325262"></i>
+            </span>
+          </div>
+          <!-- <div class="text-añadir fs-6">
+            <a class="button-add" (click)="agregarCelda()" style="color: #325262">
+              <i class="fa-solid fa-circle-plus fa-lg"  class="fa-solid fa-circle-xmark fa-lg icon-trash"></i>Añadir
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text-cancel" (click)="molDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text-save"></button>
+    </ng-template>
+  </p-dialog>
+</div>
+
+<!--  <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3"
+            cols="20"></textarea>
+        </div>
+        <div class="field">
+          <label for="status">Inventory Status</label>
+          <p-dropdown [(ngModel)]="product.inventoryStatus" inputId="inventoryStatus" optionValue="label"
+            [options]="statuses" placeholder="Select">
+            <ng-template pTemplate="selectedItem">
+              <span *ngIf="product && product.inventoryStatus"
+                [class]="'product-badge status-' + product.inventoryStatus.toString().toLowerCase()">{{product.inventoryStatus}}</span>
+            </ng-template>
+            <ng-template let-option pTemplate="item">
+              <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+          </p-dropdown>
+        </div>
+
+        <div class="field">
+          <label class="mb-3">Tipo adquisiciones</label>
+          <div class="formgrid grid">
+            <div class="field-radiobutton col-6">
+              <p-radioButton id="category1" name="category" value="Compra"
+                [(ngModel)]="product.category"></p-radioButton>
+              <label for="category1">Compra</label>
+            </div>
+            <div class="field-radiobutton col-6">
+              <p-radioButton id="category2" name="category" value="Donación"
+                [(ngModel)]="product.category"></p-radioButton>
+              <label for="category2">Donación</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="formgrid grid">
+          <div class="field col">
+            <label for="price">Price</label>
+            <p-inputNumber id="price" [(ngModel)]="product.price" mode="currency" currency="USD"
+              locale="en-US"></p-inputNumber>
+          </div>
+          <div class="field col">
+            <label for="quantity">Quantity</label>
+            <p-inputNumber id="quantity" [(ngModel)]="product.quantity"></p-inputNumber>
+          </div>
+        </div> -->

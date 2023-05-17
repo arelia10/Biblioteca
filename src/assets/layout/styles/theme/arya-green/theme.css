@@ -1862,8 +1862,8 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 
 .p-button {
   color: #212529;
-  background: #81C784;
-  border: 1px solid #81C784;
+  background: #325262;
+  border: 1px solid #325262;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;

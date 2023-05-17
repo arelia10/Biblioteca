@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Customer, Representative } from '../../domain/customer'
-import { CustomerService } from '../../service/customerservice.ts.service'
+import { CustomerServi } from '../../service/customerservi.ts.service'
 import {ButtonModule} from 'primeng/button';
 
 @Component({
@@ -21,10 +21,10 @@ export class DocumentsComponent implements OnInit {
 
 
 
-    constructor(private customerService: CustomerService) {}
+    constructor(private customerServi: CustomerServi) {}
 
     ngOnInit() {
-        this.customerService.getCustomersLarge().then((customers) => {
+        this.customerServi.getCustomersLarge().then((customers) => {
             this.customers = customers;
             this.loading = false;
 

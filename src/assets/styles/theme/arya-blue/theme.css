@@ -1862,15 +1862,15 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 
 .p-button {
   color: #212529;
-  background: #64B5F6;
-  border: 1px solid #64B5F6;
+  background: #325262;
+  border: 1px solid #325262;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   border-radius: 3px;
 }
 .p-button:enabled:hover {
-  background: #43a5f4;
+  background: #325262;
   color: #212529;
   border-color: #43a5f4;
 }
@@ -3108,10 +3108,10 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   padding: 1rem;
 }
 
-.fc {
-  /* FullCalendar 4 */
-  /* FullCalendar 5 */
-}
+/* .fc {
+   FullCalendar 4
+   FullCalendar 5
+} */
 .fc.fc-unthemed .fc-view-container th {
   background: #1e1e1e;
   border: 1px solid #383838;

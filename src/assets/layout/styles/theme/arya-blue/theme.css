@@ -7,7 +7,7 @@
   --surface-f:#1e1e1e;
   --text-color:rgba(255, 255, 255, 0.87);
   --text-color-secondary:rgba(255, 255, 255, 0.6);
-  --primary-color:#64B5F6;
+  --primary-color:#325262;
   --primary-color-text:#212529;
   --font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --surface-0: #121212;
@@ -436,7 +436,7 @@ p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext {
 }
 .p-datepicker table td.p-datepicker-today > span.p-highlight {
   color: rgba(255, 255, 255, 0.87);
-  background: rgba(100, 181, 246, 0.16);
+  background:#325262;
 }
 .p-datepicker .p-datepicker-buttonbar {
   padding: 1rem 0;
@@ -1860,10 +1860,11 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   right: 2.357rem;
 }
 
+
 .p-button {
-  color: #212529;
-  background: #64B5F6;
-  border: 1px solid #64B5F6;
+  color: #325262;
+  background: #325262;
+  border: 1px solid #325262;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -3108,10 +3109,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   padding: 1rem;
 }
 
-.fc {
-  /* FullCalendar 4 */
-  /* FullCalendar 5 */
-}
+
 .fc.fc-unthemed .fc-view-container th {
   background: #1e1e1e;
   border: 1px solid #383838;

@@ -1,0 +1,214 @@
+ :host::ng-deep{
+#modal1 .p-dialog{
+  height:100% ;
+
+}
+
+
+#modal1 .p-dialog-mask .p-dialog {
+    top: -49px;
+    left: 175px;
+    width: 80%;
+    display: flex;
+    height:100%;
+
+
+
+  }
+
+#modal1 .p-dialog-mask{
+    height:112%;
+    background:rgb(6 10 12 / 20%)!important;
+  }
+
+#modal2 .p-dialog-mask{
+
+    height:112%;
+    background:rgba(6, 10, 12, 0.329)!important;
+    align-content: center;
+
+
+}
+
+#modal2 .p-dialog-mask .p-dialog {
+
+  left: 175px;
+  top: -49px;
+  display: flex;
+
+
+
+}
+
+
+
+#cancel .p-dialog-mask .p-dialog {
+  top: -3px;
+  left: 7px;
+  width: 55%;
+  display: flex;
+  height:31%;
+
+}
+
+#cancel .p-dialog-mask{
+  height:100%
+}
+
+
+
+#tesauro .p-dropdown{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.p-calendar .p-button{
+    background-color: #325262;
+  }
+
+.p-fileupload-choose {
+  background-color:#f67920!important;
+  border-color:#f67920!important ;
+}
+.p-fileupload-choose:hover {
+  background-color:#f67920!important;
+  border-color:#f67920!important ;
+}
+.p-fileupload .p-button {
+  background-color:#325262;
+  border-color:#325262 ;
+}
+.p-fileupload .p-button:hover {
+  background-color:#325262;
+  border-color:#325262
+}
+.textarea{
+  height: 44px!important;
+}
+#modal1 .p-dialog-header {
+  border-bottom: 0 none;
+  background:#325262;
+  color:  #ffffff;
+  padding: 1.5rem;
+  padding-left:2.5rem ;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+
+}
+
+#modal1 .p-dialog .p-dialog-header .p-dialog-header-icon {
+  color:#ffffff;
+
+}
+
+
+.p-button.p-button-text-cancel {
+  color:#ffffff;
+  background-color: #325262!important;
+}
+.p-button.p-button-text-save {
+  color:#ffffff;
+  background-color: #f67920!important;
+}
+.p-button.p-button-text-save:hover {
+  color:#ffffff;
+  background-color: #f67920!important;
+  border-color: #f67920;
+}
+.p-button-add:hover {
+  color:#ffffff;
+  background-color: #325262!important;
+}
+.p-button-add{
+  color:#ffffff;
+  background-color: #325262!important;
+}
+.p-button-export:hover {
+  color:#ffffff;
+  background-color:none!important;
+}
+.p-button-export{
+  color:#ffffff;
+  background-color:  #389468!important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td{
+  font-size: 14px;
+  padding: 1rem 0rem
+}
+
+.p-button-rounded-accion{
+  background-color:transparent ;
+  border-color: transparent;
+
+}
+.p-button-rounded-accion:hover{
+  background-color:transparent;
+  border-color: transparent;
+
+
+}
+
+ }
+
+
+h5{
+  color: #325262;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+
+}
+
+.input-container i{
+ width: 1.7rem;
+  background:#325262;
+ color:white
+
+}
+
+.btn-plus {
+  height: 3.1rem;
+  background: #325262;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+input.form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
+  width: 32px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.button-trash{
+  position: absolute;
+  right: 0rem;
+  top: 50%;
+  transform: translateY(-50%)
+}
+.icon-trash{
+  margin-top: 0rem;
+}
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.button-add{
+  margin-left: 0.2rem;
+  color: #325262;
+  cursor: pointer;
+
+  }
+.textarea{
+  height: 70px;
+}
+

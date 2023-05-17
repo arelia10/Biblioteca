@@ -10,17 +10,17 @@
 }
 
 .product-badge {
-    &.status-instock {
-        background: #C8E6C9;
-        color: #256029;
+    &.status-digital {
+        background: #325262;
+        color: #fff;
     }
 
-    &.status-outofstock {
+    &.status-prestado {
         background: #FFCDD2;
         color: #C63737;
     }
 
-    &.status-lowstock {
+    &.status-biblioteca {
         background: #FEEDAF;
         color: #8A5340;
     }

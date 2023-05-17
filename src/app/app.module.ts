@@ -20,7 +20,7 @@ import { SliderModule } from 'primeng/slider';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextModule } from 'primeng/inputtext';
-import { CustomerService } from './service/customerservice.ts.service';
+import { CustomerServi } from './service/customerservi.ts.service';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
@@ -35,6 +35,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 import { AppLayoutModule } from './layout/app.layout.module';
+
+import { ProductService } from './demo/service/product.service';
+import { CountryService } from './demo/service/country.service';
+import { CustomerService } from './demo/service/customer.service';
+import { EventService } from './demo/service/event.service';
+import { IconService } from './demo/service/icon.service';
+import { NodeService } from './demo/service/node.service';
+import { PhotoService } from './demo/service/photo.service';
 
 
 
@@ -85,7 +93,8 @@ import { AppLayoutModule } from './layout/app.layout.module';
 
 
   ],
-  providers: [   CustomerService,{provide:HashLocationStrategy,useClass: HashLocationStrategy}],
+  providers: [   CustomerServi,{provide: LocationStrategy,useClass: HashLocationStrategy},CountryService, CustomerService, EventService, IconService, NodeService,
+    PhotoService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
